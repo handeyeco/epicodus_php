@@ -4,7 +4,9 @@ Going through the Epicodus curriculum found at [learnhowtoprogram.com](https://w
 
 ##Takeaways
 
-* Setting up default values in PHP:
+### Default Values
+
+Setting up default values in PHP:
 
 ``` PHP
 $numbers = array(1, 2, 3, false);
@@ -26,13 +28,15 @@ JavaScript (without using default values):
 let numbers = [1, 2, 3, false];
 
 numbers.forEach(elem => console.log(elem || "undefined"));
-// 123undefined
+// "123undefined"
 
 numbers.forEach(elem => console.log(elem ? elem : "undefined"));
-// 123undefined
+// "123undefined"
 ```
 
-* Interesting PHP string interpolation:
+### PHP String Interpolation
+
+Interesting PHP string interpolation:
 
 ``` PHP
 $language = "PHP";
@@ -52,7 +56,7 @@ console.log(comment);
 // "JavaScript is interesting!"
 ```
 
-In PHP `""` and `''` are different it seems so:
+In PHP `""` and `''` are different. So:
 
 ``` PHP
 $language = "PHP";
@@ -62,9 +66,11 @@ print $comment;
 // "$language is interesting!"
 ```
 
-So single quotes prevents accidental string interpolation.
+Single quotes prevents accidental string interpolation.
 
-* Not sure if this would be categorized as a difference of scope or of closure, but I was interested by this PHP code:
+### Closure or Scope Quirk
+
+Not sure if this would be categorized as a difference of scope or of closure, but I was interested by this PHP code:
 
 ``` PHP
 $number1 = 5;
@@ -90,4 +96,6 @@ console.log(multiply(3));
 // 15
 ```
 
-* It's a lot easier to work with PHP than I thought it would be. A local host can be run with `php -S localhost:8000` or a shell can be opened with `php -a` to do quick PHP programming and working with forms is really easy by referencing PHP scripts with `form action="script.php"` from an HTML or PHP file.
+### Quick Environment
+
+It's a lot easier to work with PHP than I thought it would be. A local host can be run with `php -S localhost:8000` or a shell can be opened with `php -a` to do quick PHP programming and working with forms is really easy by referencing PHP scripts with `form action="script.php"` from an HTML or PHP file.

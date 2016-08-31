@@ -46,7 +46,6 @@ foreach ($prices as $price) {
         </form>
 
         <h3>Solution: <?php echo $result; ?></h3>
-        <p><?php echo var_dump($prices); ?></p>
     </div>
 </body>
 </html>
