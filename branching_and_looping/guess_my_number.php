@@ -8,6 +8,8 @@
       return "Congrats! You guessed it!";
     } elseif ($guessed_number < $winning_number) {
       return "Too low! Sorry, you lose!";
+    } elseif ($guessed_number < 1 || $guessed_number > 20) {
+      return "That's not between 1 and 20!";
     } else {
       return "Too high! Sorry you lose!";
     }

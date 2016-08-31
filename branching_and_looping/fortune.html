@@ -9,12 +9,12 @@
         <h1>Let me tell your FORTUNE!</h1>
         <form action="fortune.php">
             <div class="form-group">
-                <label for="month">What month were you born?</label>
-                <input id="month" name="month" class="form-control" type="month">
+                <label for="month">What month were you born? (1-12)</label>
+                <input id="month" name="month" class="form-control" type="number" min="1" max="12">
             </div>
             <div class="form-group">
                 <label for="color">What's your favorite color?</label>
-                <input id="color" name="color" class="form-control" type="color">
+                <input id="color" name="color" class="form-control" type="text">
             </div>
             <button type="submit" class="btn btn-success">Go!</button>
         </form>
