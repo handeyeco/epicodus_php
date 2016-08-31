@@ -4,6 +4,26 @@ Going through the Epicodus curriculum found at [learnhowtoprogram.com](https://w
 
 ##Takeaways
 
+### The Truth About "0"
+
+In PHP:
+
+``` PHP
+if ("0") { print "Hello"; }
+else { print "Goodbye"; }
+
+// "Goodbye"
+```
+
+in JS:
+
+``` JavaScript
+if ("0") { console.log("Hello"); }
+else { console.log("Goodbye"); }
+
+// "Hello"
+```
+
 ### Default Values
 
 Setting up default values in PHP:
@@ -33,6 +53,21 @@ numbers.forEach(elem => console.log(elem || "undefined"));
 numbers.forEach(elem => console.log(elem ? elem : "undefined"));
 // "123undefined"
 ```
+
+``` PHP
+// PHP
+print false || 2; // 1 - a coercion of true
+print false ?: 2; // 2
+var_dump(false || 2); // bool(true)
+```
+
+``` JavaScript
+// JS
+console.log(false || 2); // 2
+console.log(false ? false : 2); // 2
+```
+
+In PHP the or (`||`) operator returns a boolean rather than a value like in JavaScript.
 
 ### PHP String Interpolation
 
