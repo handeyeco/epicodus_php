@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shipping Calculator</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1>Shipping Calculator</h1>
+
+    <form action="parcels.php">
+      <div class="form-group">
+        <label for="height">Height:</label>
+        <input name="height" id="height" class="form-control" type="number" required />
+      </div>
+
+      <div class="form-group">
+        <label for="width">Width:</label>
+        <input name="width" id="width" class="form-control" type="number" required />
+      </div>
+
+      <div class="form-group">
+        <label for="length">Length:</label>
+        <input name="length" id="length" class="form-control" type="number" required />
+      </div>
+
+      <div class="form-group">
+        <label for="weight">Weight:</label>
+        <input name="weight" id="weight" class="form-control" type="number" required />
+      </div>
+
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
