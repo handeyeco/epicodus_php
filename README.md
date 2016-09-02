@@ -4,6 +4,12 @@ Going through the Epicodus curriculum found at [learnhowtoprogram.com](https://w
 
 ##Takeaways
 
+### Installing Composer
+
+Found a lot of conflicting resources explaining how to install Composer. This was the simplest and seemed to work:
+
+`brew install homebrew/php/composer`
+
 ### The Truth About "0"
 
 In PHP:

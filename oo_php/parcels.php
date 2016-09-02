@@ -99,7 +99,7 @@ $package = new Parcel($_GET['height'], $_GET['width'], $_GET['length'], $_GET['w
     <h1>Shipping Calculator</h1>
     <h3>Dimensions: <?php echo $package->getHeight() . " x " . $package->getWidth() . " x " . $package->getLength(); ?></h3>
     <h3>Weight: <?php echo $package->getWeight(); ?></h3>
-    <h3>Total Cost: <?php echo $package->returnCost(); ?></h3>
+    <h3>Total Cost: $<?php echo $package->returnCost(); ?></h3>
   </div>
 </body>
 </html>
