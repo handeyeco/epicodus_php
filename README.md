@@ -6,7 +6,7 @@ Going through the Epicodus curriculum found at [learnhowtoprogram.com](https://w
 
 ### Installing Composer
 
-Found a lot of conflicting resources explaining how to install Composer. This was the simplest and seemed to work:
+Found a lot of conflicting resources explaining how to install Composer. This was the simplest and seemed to work (assuming Homebrew is installed):
 
 `brew install homebrew/php/composer`
 
