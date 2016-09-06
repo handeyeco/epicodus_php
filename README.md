@@ -4,6 +4,40 @@ Going through the Epicodus curriculum found at [learnhowtoprogram.com](https://w
 
 ##Takeaways
 
+### PHP-Twig
+
+Syntax highlighting in Atom with PHP-Twig. Also makes autoclose-html magically work.
+
+### Closure Quirk Pt 2
+
+As mentioned before, PHP doesn't use closures by default:
+
+``` PHP
+$number1 = 5;
+
+function multiply ($number2) {
+  return $number1 * $number2;
+}
+
+echo multiply(3);
+// Error; $number1 is not in scope
+```
+
+Closures have to be explicitly declared:
+
+``` PHP
+$number1 = 5;
+
+$multiply = function ($number2) use ($number1) {
+  return $number1 * $number2;
+}
+
+echo multiply(3);
+// 15
+```
+
+So far, I have only found references to closures with anonymous functions.
+
 ### Installing Composer
 
 Found a lot of conflicting resources explaining how to install Composer. This was the simplest and seemed to work (assuming Homebrew is installed):
