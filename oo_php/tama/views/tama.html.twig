@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Tamagotchi</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Tamagotchi</h1>
+
+            <h2>Time: {{ tama.getTime }}</h2>
+
+            <h3>Food: {{ tama.getFood }}</h3>
+            <h3>Sleep: {{ tama.getSleep }}</h3>
+            <h3>Play: {{ tama.getPlay }}</h3>
+
+            <form action='/time' method="post">
+                <button type="submit" class="btn btn-danger">Add Time</button>
+            </form>
+
+            <form action='/feed' method="post">
+                <button type="submit" class="btn btn-success">Feed</button>
+            </form>
+
+            <form action='/rest' method="post">
+                <button type="submit" class="btn btn-primary">Rest</button>
+            </form>
+
+            <form action='/run' method="post">
+                <button type="submit" class="btn btn-Warning">Play</button>
+            </form>
+
+            <h3>Rules:</h3>
+            <ul>
+              <li>Don't over feed, over rest, or over play your pet!</li>
+              <li>Don't let your pet's stats get to zero!</li>
+            </ul>
+        </div>
+    </body>
+</html>
