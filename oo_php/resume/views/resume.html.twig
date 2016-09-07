@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Resume</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Resume</h1>
+
+            {% if jobs is not empty %}
+                {% for job in jobs %}
+                    <h3>{{ job.title }}</h3>
+                    <h4>{{ job.business }}, {{ job.city }}</h4>
+                    <p>{{ job.start_year }} - {{ job.end_year }}</p>
+                {% endfor %}
+            {% endif %}
+
+            <form action='/job' method="post">
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input name="title" id="title" class="form-control" type="text" required/>
+                </div>
+                <div class="form-group">
+                    <label for="business">Business:</label>
+                    <input name="business" id="business" class="form-control" type="text" required/>
+                </div>
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <input name="city" id="city" class="form-control" type="text" required/>
+                </div>
+                <div class="form-group">
+                    <label for="start">Starting Year:</label>
+                    <input name="start" id="start" class="form-control" type="number" required/>
+                </div>
+                <div class="form-group">
+                    <label for="end">Ending Year:</label>
+                    <input name="end" id="end" class="form-control" type="number" required/>
+                </div>
+
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+
+            <form action='/delete' method="post">
+                <button type="submit" class="btn btn-danger">Delete All</button>
+            </form>
+        </div>
+    </body>
+</html>
