@@ -16,15 +16,20 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 ));
 
 $app->get("/", function () use ($app) {
-
+  return $app["twig"]->render("address_book.html.twig", array( "contacts" => Contact::getAll() ));
 });
 
 $app->post("/create_contact", function () use ($app) {
+  $new_contact = new Contact($_POST['name'], $_POST['number'], $_POST['address']);
+  $new_contact->saveContact();
 
+  return $app["twig"]->render("address_book.html.twig", array( "contacts" => Contact::getAll() ));
 });
 
 $app->post("/delete_contacts", function () use ($app) {
+  Contact::deleteAll();
 
+  return $app["twig"]->render("address_book.html.twig", array( "contacts" => Contact::getAll() ));
 });
 
 return $app;
