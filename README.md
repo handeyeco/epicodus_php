@@ -4,6 +4,24 @@ Going through the Epicodus curriculum found at [learnhowtoprogram.com](https://w
 
 ##Takeaways
 
+### Pre & Post Increment
+
+They do different things!
+
+``` PHP
+$count = 5;
+$count2 = count++;
+
+print $count; // 6
+print $count; // 5
+
+$count = 5;
+$count2 = ++count;
+
+print $count; // 6
+print $count; // 6
+```
+
 ### PHP-Twig
 
 Syntax highlighting in Atom with PHP-Twig. Also makes autoclose-html magically work.
