@@ -4,6 +4,25 @@ Going through the Epicodus curriculum found at [learnhowtoprogram.com](https://w
 
 ##Takeaways
 
+### array_map and methods
+
+This is pretty gnarly code, but it works. Simplified example:
+
+``` PHP
+class Capitalize {
+  function capitalizeWord ($input) {
+    return ucfirst($input);
+  }
+
+  function capitalizePhrase($input) {
+    $input_array = explode(" ", $input);
+    $output_array = array_map(array($this, "capitalizeWord"), $input_array);
+    return implode(" ", $output_array);
+  }
+}
+
+```
+
 ### Pre & Post Increment
 
 They do different things!
