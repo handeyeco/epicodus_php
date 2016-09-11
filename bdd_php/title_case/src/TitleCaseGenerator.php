@@ -10,9 +10,7 @@ class TitleCaseGenerator {
   }
 
   function makeTitleCase($input_title) {
-    $input_array = explode(" ", $input_title);
-    $output_array = array_map(array($this, "wordMap"), $input_array);
-    return implode(" ", $output_array);
+    return implode(" ", array_map("TitleCaseGenerator::wordMap", explode(" ", $input_title)));
   }
 }
 
