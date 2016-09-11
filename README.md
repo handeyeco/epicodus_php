@@ -67,8 +67,9 @@ class Capitalize {
 Makes me miss:
 
 ``` JavaScript
+//JavaScript
 function capitalizePhrase(input) {
-  return input.split(" ").map(capitalizeWord).join("");
+  return input.split(" ").map(capitalizeWord).join(" ");
 }
 ```
 
