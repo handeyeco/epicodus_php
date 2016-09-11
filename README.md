@@ -10,17 +10,66 @@ This is pretty gnarly code, but it works. Simplified example:
 
 ``` PHP
 class Capitalize {
+
   function capitalizeWord ($input) {
     return ucfirst($input);
   }
 
   function capitalizePhrase($input) {
     $input_array = explode(" ", $input);
+
+    // This is the gnarly part:
     $output_array = array_map(array($this, "capitalizeWord"), $input_array);
+
     return implode(" ", $output_array);
   }
-}
 
+}
+```
+
+And this:
+
+``` PHP
+class Capitalize {
+
+  function capitalizeWord ($input) {
+    return ucfirst($input);
+  }
+
+  function capitalizePhrase($input) {
+    $input_array = explode(" ", $input);
+
+    // A little cleaner:
+    $output_array = array_map("Capitalize::capitalizeWord", $input_array);
+
+    return implode(" ", $output_array);
+  }
+
+}
+```
+
+And for S&Gs:
+
+``` PHP
+class Capitalize {
+
+  function capitalizeWord ($input) {
+    return ucfirst($input);
+  }
+
+  function capitalizePhrase($input) {
+    return implode(" ", array_map("Capitalize::capitalizeWord", explode(" ", $input)));
+  }
+
+}
+```
+
+Makes me miss:
+
+``` JavaScript
+function capitalizePhrase(input) {
+  return input.split(" ").map(capitalizeWord).join("");
+}
 ```
 
 ### Pre & Post Increment
