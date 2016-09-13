@@ -4,6 +4,27 @@ Going through the Epicodus curriculum found at [learnhowtoprogram.com](https://w
 
 ##Takeaways
 
+### Explode Empty Delimiter
+
+`explode != split`
+
+``` JavaScript
+//JS
+
+"Hey".split("");
+//["H", "e", "y"]
+```
+
+``` PHP
+//PHP
+
+explode("", "Hey");
+//Error: empty delimiter
+
+str_split("Hey");
+//["H", "e", "y"]
+```
+
 ### array_map and methods
 
 This is pretty gnarly code, but it works. Simplified example:

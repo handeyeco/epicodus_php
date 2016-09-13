@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Ping-Pong</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Ping-Pong</h1>
+
+            {% if result is defined %}
+              {% for item in result %}
+                <h2>{{item}}</h2>
+              {% endfor %}
+            {% endif %}
+
+            <form action='/result' method="get">
+                <div class="form-group">
+                    <label for="input">Ping-Pong:</label>
+                    <input name="input" id="input" class="form-control" type="number" min="1" required/>
+                </div>
+
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+
+        </div>
+    </body>
+</html>
