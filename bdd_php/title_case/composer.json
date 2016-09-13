@@ -5,6 +5,7 @@
     "phpunit/phpunit": "4.5.*"
   },
   "scripts": {
-    "test": "phpunit tests"
+    "test": "phpunit tests",
+    "server": "php -S localhost:8000"
   }
 }

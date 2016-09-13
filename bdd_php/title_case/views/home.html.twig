@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Title Case</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Title Case</h1>
+
+            {% if result is defined %}
+                <h2>{{result}}</h2>
+            {% endif %}
+
+            <form action='/result' method="get">
+                <div class="form-group">
+                    <label for="input">Make Title Case:</label>
+                    <input name="input" id="input" class="form-control" type="text" required/>
+                </div>
+
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+
+        </div>
+    </body>
+</html>
