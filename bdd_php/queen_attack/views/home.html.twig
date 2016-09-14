@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Queen Attack</title>
+</head>
+<body>
+
+  {% if result is defined %}
+    {% if result %}
+      <h2>The Queen can Attack</h2>
+    {% else %}
+      <h2>The Queen cannot Attack</h2>
+    {% endif %}
+  {% endif %}
+
+  <form action="/result">
+    <label for="x_pos_queen">Queen X-Position (1-8):</label>
+    <input id="x_pos_queen" name="x_pos_queen" type="number" min="1" max="8" required />
+    <label for="y_pos_queen">Queen Y-Position (1-8):</label>
+    <input id="y_pos_queen" name="y_pos_queen" type="number" min="1" max="8" required />
+    <label for="x_pos_attack">Attack X-Position (1-8):</label>
+    <input id="x_pos_attack" name="x_pos_attack" type="number" min="1" max="8" required />
+    <label for="y_pos_attack">Attack Y-Position (1-8):</label>
+    <input id="y_pos_attack" name="y_pos_attack" type="number" min="1" max="8" required />
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
