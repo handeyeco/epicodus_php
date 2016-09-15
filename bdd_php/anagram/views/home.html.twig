@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    <title>Anagrams</title>
+</head>
+<body>
+    <div class='container'>
+        <h1>Anagrams</h1>
+
+        {% if base is defined %}
+          {% if result is not empty %}
+
+            <h2>These are anagrams:</h2>
+
+            <ul>
+              {% for word in result %}
+                <li>{{ word }}</li>
+              {% endfor %}
+            </ul>
+
+          {% else %}
+
+            <h2>No matching results, sorry.</h2>
+
+          {% endif %}
+        {% endif %}
+
+        <form action='/result'>
+            <div class='form-group'>
+              <label for='base-word'>Enter the base word:</label>
+              <input id='base-word' name='base-word' class='form-control' type='text' required>
+            </div>
+            <div class='form-group'>
+              <label for='comparison'>Enter comparison words (separated with a comma):</label>
+              <input id='comparison' name='comparison' class='form-control' type='text' required>
+            </div>
+            <button type='submit' class='btn btn-success'>Submit</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+        <title>Coin Change</title>
+    </head>
+    <body>
+        <div class='container'>
+            <h1>Coin Change</h1>
+
+            {% if result is defined %}
+                <h2>Results:</h2>
+                <ul>
+                    {% for coin, amount in result %}
+                      <li>{{ coin }}: {{ amount }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <form action='/result'>
+                <div class='form-group'>
+                    <label for='change'>Enter the amount of change (no decimals):</label>
+                    <input id='change' name='change' class='form-control' type='number' required>
+                </div>
+                <button type='submit' class='btn btn-success'>Submit</button>
+            </form>
+        </div>
+    </body>
+</html>
