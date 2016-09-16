@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+        <title>Scrabble Score</title>
+    </head>
+    <body>
+        <div class='container'>
+            <h1>Scrabble Score</h1>
+
+            {% if score is defined %}
+              <h3>The score for {{ word }} is {{ score }}</h3>
+            {% endif %}
+
+            <form action='/result'>
+                <div class='form-group'>
+                    <label for='word'>Enter the word:</label>
+                    <input id='word' name='word' class='form-control' type='text' required>
+                </div>
+                <button type='submit' class='btn btn-success'>Submit</button>
+            </form>
+        </div>
+    </body>
+</html>
