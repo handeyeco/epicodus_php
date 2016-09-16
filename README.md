@@ -34,7 +34,7 @@ $arr = array();
 
 print isset($arr["name"]) ? $arr["name"] : 0;
 
-// Error Undefined Index: name
+// 0
 ```
 
 Although this doesn't get to use the beauty of the `?:` operator. It is however more explicit.
