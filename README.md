@@ -4,7 +4,67 @@ Going through the Epicodus curriculum found at [learnhowtoprogram.com](https://w
 
 ##Takeaways
 
-## PHP Doesn't Like Undefineds
+### PHP String Interpolation Pt 2
+
+Function declarations don't seem to be able to be called during a string interpolation:
+
+``` PHP
+function getWord () {
+  return "puppy";
+}
+
+$phrase = "I want a {getWord()}";
+
+print $phrase;
+// I want a {getWord()}
+```
+
+Anonymous functions store in a variable can be:
+
+``` PHP
+$getWord = function () {
+  return "puppy";
+}; // Don't forget that semicolon!
+
+$phrase = "I want a {$getWord()}";
+
+print $phrase;
+// I want a puppy
+```
+
+And methods can be (using `$this` or a variable):
+
+``` PHP
+class Word {
+  function getWord () {
+    return "puppy";
+  }
+}
+
+$instance = new Word();
+$phrase = "I want a {$instance->getWord()}";
+
+print $phrase;
+// I want a puppy
+```
+
+Whereas a variable with a string doesn't need curly brackets, a method or function call does:
+
+``` PHP
+$word = "puppy";
+$phrase = "I want a $word";
+
+print $phrase;
+// I want a puppy
+
+$word = function () { return "puppy"; };
+$phrase = "I want a $word()";
+
+print $phrase;
+// Error: Object of class Closure could not be converted to string
+```
+
+### PHP Doesn't Like Undefineds
 
 ``` PHP
 // PHP
@@ -18,6 +78,7 @@ print $arr["name"] ?: 0;
 
 ``` JavaScript
 // JS
+
 var obj = {};
 
 console.log(obj["name"] ? obj["name"] : 0);
