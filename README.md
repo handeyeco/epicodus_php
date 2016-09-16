@@ -4,6 +4,41 @@ Going through the Epicodus curriculum found at [learnhowtoprogram.com](https://w
 
 ##Takeaways
 
+## PHP Doesn't Like Undefineds
+
+``` PHP
+// PHP
+
+$arr = array();
+
+print $arr["name"] ?: 0;
+
+// Error Undefined Index: name
+```
+
+``` JavaScript
+// JS
+var obj = {};
+
+console.log(obj["name"] ? obj["name"] : 0);
+
+// 0
+```
+
+PHPUnit gets stopped dead in its tracks. Script in Atom returns an error for PHP but also `0`. The correct answer seems to be:
+
+``` PHP
+// PHP
+
+$arr = array();
+
+print isset($arr["name"]) ? $arr["name"] : 0;
+
+// Error Undefined Index: name
+```
+
+Although this doesn't get to use the beauty of the `?:` operator. It is however more explicit.
+
 ### Explode Empty Delimiter
 
 `explode != split`
@@ -288,7 +323,6 @@ It's a lot easier to work with PHP than I thought it would be. A local host can 
 ### Default Method Return Values
 
 ``` PHP
-
 $in1 = "dog";
 
 $in1 = str_split($in1); // Splits to an array

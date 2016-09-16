@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    <title>Repeat Counter</title>
+</head>
+<body>
+    <div class='container'>
+        <h1>Repeat Counter</h1>
+
+        {% if result is defined %}
+          <h3>{{ word }} was found {{ result }} times</h3>
+          <p>Word: {{ word }}</p>
+          <p>Phrase: {{ phrase }}</p>
+          <p>Count: {{ result }}</p>
+        {% endif %}
+
+        <form action='/result'>
+            <div class='form-group'>
+              <label for='word'>Enter the word to search for:</label>
+              <input id='word' name='word' class='form-control' type='text' required>
+            </div>
+            <div class='form-group'>
+              <label for='phrase'>Enter the phrase to search in:</label>
+              <input id='phrase' name='phrase' class='form-control' type='text' required>
+            </div>
+            <button type='submit' class='btn btn-success'>Submit</button>
+        </form>
+    </div>
+</body>
+</html>
