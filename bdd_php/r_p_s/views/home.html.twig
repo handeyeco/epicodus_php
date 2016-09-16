@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    <title>Paper, Rock, Scissors</title>
+</head>
+<body>
+    <div class='container'>
+        <h1>Paper, Rock, Scissors</h1>
+
+        {% if result is defined %}
+
+          {% if result == "Tie" %}
+            <h2>It's a tie...</h2>
+          {% else %}
+            <h2>{{ result }} wins!</h2>
+          {% endif %}
+
+        {%  endif %}
+
+        <form action='/result'>
+            <div class='form-group'>
+              <label for='player1'>Enter for Player 1:</label><br />
+              <input id='player1' name='player1' value="Paper" type='radio' required> Paper <br />
+              <input id='player1' name='player1' value="Scissors" type='radio' required> Scissors <br />
+              <input id='player1' name='player1' value="Rock" type='radio' required> Rock <br />
+            </div>
+            <div class='form-group'>
+              <label for='player2'>Enter for Player 2:</label><br />
+              <input id='player2' name='player2' value="Paper" type='radio' required> Paper <br />
+              <input id='player2' name='player2' value="Scissors" type='radio' required> Scissors <br />
+              <input id='player2' name='player2' value="Rock" type='radio' required> Rock <br />
+            </div>
+            <button type='submit' class='btn btn-success'>Submit</button>
+        </form>
+    </div>
+</body>
+</html>

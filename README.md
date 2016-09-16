@@ -282,3 +282,18 @@ console.log(multiply(3));
 ### Quick Environment
 
 It's a lot easier to work with PHP than I thought it would be. A local host can be run with `php -S localhost:8000` or a shell can be opened with `php -a` to do quick PHP programming and working with forms is really easy by referencing PHP scripts with `form action="script.php"` from an HTML or PHP file.
+
+## Questions
+
+### Default Method Return Values
+
+``` PHP
+
+$in1 = "dog";
+
+$in1 = str_split($in1); // Splits to an array
+sort($in1); // Sorts the array
+
+```
+
+Why does `str_split` have to be reassigned whereas `sort` does not?

@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__."/../vendor/autoload.php";
-require_once __DIR__."/../src/CoinChange.php";
+require_once __DIR__."/../src/Game.php";
 
 $app = new Silex\Application();
 
@@ -13,9 +13,9 @@ $app->get("/", function () use ($app) {
   return $app["twig"]->render("home.html.twig");
 });
 
-$app->get("result", function () use ($app) {
-  $change = new CoinChange();
-  $result = $change->leastChange($_GET["change"]);
+$app->get("/result", function () use ($app) {
+  $game = new Game($_GET["player1"], $_GET["player2"]);
+  $result = $game->returnWinner();
 
   return $app["twig"]->render("home.html.twig", array(
     "result" => $result

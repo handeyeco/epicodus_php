@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__."/../vendor/autoload.php";
-require_once __DIR__."/../src/CoinChange.php";
+require_once __DIR__."/../src/FindReplace.php";
 
 $app = new Silex\Application();
 
@@ -13,9 +13,9 @@ $app->get("/", function () use ($app) {
   return $app["twig"]->render("home.html.twig");
 });
 
-$app->get("result", function () use ($app) {
-  $change = new CoinChange();
-  $result = $change->leastChange($_GET["change"]);
+$app->get("/result", function () use ($app) {
+  $phrase = new FindReplace($_GET["phrase"]);
+  $result = $phrase->replaceAndReturn($_GET["find"], $_GET["replace"]);
 
   return $app["twig"]->render("home.html.twig", array(
     "result" => $result
