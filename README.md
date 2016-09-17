@@ -2,6 +2,11 @@
 
 Going through the Epicodus curriculum found at [learnhowtoprogram.com](https://www.learnhowtoprogram.com/php).
 
+## Contents
+
+[Takeaways](#Takeaways)
+[Questions](#Questions)
+
 ##Takeaways
 
 ### PHP String Interpolation Pt 2
