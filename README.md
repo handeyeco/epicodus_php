@@ -4,8 +4,8 @@ Going through the Epicodus curriculum found at [learnhowtoprogram.com](https://w
 
 ## Contents
 
-[Takeaways](#Takeaways)
-[Questions](#Questions)
+* [Takeaways](##Takeaways)
+* [Questions](#$Questions)
 
 ##Takeaways
 
