@@ -384,11 +384,41 @@ It's a lot easier to work with PHP than I thought it would be. A local host can 
 ### Default Method Return Values
 
 ``` PHP
+//PHP
+
 $in1 = "dog";
 
 $in1 = str_split($in1); // Splits to an array
 sort($in1); // Sorts the array
+$in1 = implode($in1);
 
+print $in1;
+// dgo
+
+$in1 = "dog";
+
+$in1 = str_split($in1);
+$in1 = implode(sort($in1));
+
+print $in1;
+// Error implode(): argument must be an array
+
+$in1 = "dog";
+
+$in1 = str_split($in1);
+$in1 = sort($in1);
+
+print $in1;
+// 1
 ```
 
 Why does `str_split` have to be reassigned whereas `sort` does not?
+
+``` JavaScript
+// JS
+
+var in1 = "dog";
+
+console.log(in1.split("").sort().join(""));
+// dgo
+```
