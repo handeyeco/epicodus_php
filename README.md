@@ -5,7 +5,7 @@ Going through the Epicodus curriculum found at [learnhowtoprogram.com](https://w
 ## Contents
 
 * [Takeaways](#takeaways)
-* [Questions](#Questions)
+* [Questions](#questions)
 
 ##<a name="takeaways"></a>Takeaways
 
