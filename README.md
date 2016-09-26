@@ -26,6 +26,21 @@ User USERNAME
 
 where USERNAME is my username. Now I can restart XAMPP and go to `localhost` in a browser.
 
+However, this only gets `index.php` working. To get all of the routing working as expected I created `.htaccess` in the `web` directory and added:
+
+```
+<IfModule mod_rewrite.c>
+    Options -MultiViews
+
+    RewriteEngine On
+    #RewriteBase /path/to/app
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [QSA,L]
+</IfModule>
+```
+Via [Silex](http://silex.sensiolabs.org/doc/master/web_servers.html)
+
 ### PHP String Interpolation Pt 2
 
 Function declarations don't seem to be able to be called during a string interpolation:

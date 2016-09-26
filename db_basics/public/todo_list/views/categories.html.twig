@@ -1,0 +1,33 @@
+<html>
+<head>
+  <title>To Do List</title>
+</head>
+<body>
+  <h1>To Do List</h1>
+
+  {% if categories is not empty %}
+    <p>Here are all your categories:</p>
+    <ul>
+      {% for category in categories %}
+        <li>{{ category.getName }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <form action='/categories' method='post'>
+    <label for='name'>Category Name</label>
+    <input for='name' name='name' type='text' />
+
+    <button type='submit'>Add Category</button>
+  </form>
+
+  <form action='/delete_categories' method='post'>
+    <button type='submit'>Delete All</button>
+  </form>
+
+  <form action='/' method='get'>
+    <button type='submit'>Tasks</button>
+  </form>
+
+</body>
+</html>
