@@ -9,6 +9,23 @@ Going through the Epicodus curriculum found at [learnhowtoprogram.com](https://w
 
 ##<a name="takeaways"></a>Takeaways
 
+### XAMPP Madness!
+
+Using XAMPP and Sequel Pro. To get XAMPP to direct to working directory change `/Applications/XAMPP/xamppfiles/etc/httpd.conf`:
+
+```
+DocumentRoot "/Users/matthew/FULL_PATH/todo_list/web"
+<Directory "/Users/matthew/FULL_PATH/todo_list/web">
+```
+
+where FULL_PATH is the path and
+
+```
+User USERNAME
+```
+
+where USERNAME is my username. Now I can restart XAMPP and go to `localhost` in a browser.
+
 ### PHP String Interpolation Pt 2
 
 Function declarations don't seem to be able to be called during a string interpolation:
