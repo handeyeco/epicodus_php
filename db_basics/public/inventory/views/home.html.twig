@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inventory</title>
+</head>
+<body>
+
+  <h1>Inventory</h1>
+
+  {% if items is not empty %}
+    <ul>
+      {% for item in items %}
+        <li>{{item.name}} - {{item.year}}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <form action="/add_item" method="post">
+    <label for="name">Name:</label>
+    <input id="name" name="name" type="text" required />
+
+    <label for="year">Year:</label>
+    <input id="year" name="year" type="number" required />
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <form action="/delete_all" method="post">
+    <button type="submit">Delete All</button>
+  </form>
+
+</body>
+</html>
