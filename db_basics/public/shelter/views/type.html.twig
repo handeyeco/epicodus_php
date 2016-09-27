@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shelter</title>
+
+  <link rel="stylesheet" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+
+<body>
+  <h1>Shelter</h1>
+
+  <a href="/">Home</a>
+
+  <h2>{{ type.getName }}</h2>
+
+  {% if animals is not empty %}
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Admitted</th>
+      </tr>
+
+      {% for animal in animals %}
+        <tr>
+          <td>{{ animal.getName }}</td>
+          <td>{{ animal.getGender }}</td>
+          <td>{{ animal.getAdmitted }}</td>
+        </tr>
+      {% endfor %}
+
+    </table>
+  {% else %}
+    <p>No animals of this type have been added.</p>
+  {% endif %}
+
+  <h2>Add an Animal</h2>
+
+  <form action="/type/{{ type.getId }}" method="post">
+    <label for="name">Name:</label>
+    <input id="name" name="name" type="text" required />
+
+    <label for="gender">Gender:</label>
+    <input id="gender" name="gender" type="text" required />
+
+    <label for="admitted">Admitted:</label>
+    <input id="admitted" name="admitted" type="date" required />
+
+    <button type="submit">Add Animal</button>
+  </form>

@@ -23,6 +23,18 @@ class AnimalTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals("Bert", $result);
   }
 
+  function test_getAnimalsByType() {
+    $animal1 = new Animal(1, "Bert", "Male", "2012-10-10", "Boxer", null);
+    $animal2 = new Animal(2, "Ernie", "Male", "2014-11-12", "Calico", null);
+    $animal1->save();
+    $animal2->save();
+
+    $getByType = Animal::getAnimalsByType(1);
+    $count = count($getByType);
+
+    $this->assertEquals(1, $count);
+  }
+
   function test_getAll() {
     $animal1 = new Animal(1, "Bert", "Male", "2012-10-10", "Boxer", null);
     $animal2 = new Animal(1, "Ernie", "Male", "2014-11-12", "Calico", null);

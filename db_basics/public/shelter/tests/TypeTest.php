@@ -44,6 +44,18 @@ class TypeTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(2, $count);
   }
 
+  function test_getTypeById() {
+    $type1 = new Type("cat", null);
+    $type2 = new Type("dog", null);
+    $type1->save();
+    $type2->save();
+
+    $id = $GLOBALS['DB']->lastInsertId();
+    $result = Type::getTypeById($id);
+
+    $this->assertEquals("dog", $result->getName());
+  }
+
   function test_deleteAll() {
     $type1 = new Type("cat", null);
     $type2 = new Type("dog", null);

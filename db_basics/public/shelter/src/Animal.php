@@ -20,6 +20,14 @@ class Animal {
     return $this->name;
   }
 
+  function getGender() {
+    return $this->gender;
+  }
+
+  function getAdmitted() {
+    return $this->admitted;
+  }
+
   function getId() {
     return $this->id;
   }
@@ -30,8 +38,62 @@ class Animal {
     $this->id = $GLOBALS['DB']->lastInsertId();
   }
 
+  static function getAnimalsByType($type_id) {
+    $query = $GLOBALS['DB']->query("SELECT * FROM animals WHERE type_id = $type_id");
+    $result = array();
+
+    foreach ($query as $animal) {
+      $type_id  = $animal['type_id'];
+      $name     = $animal['name'];
+      $gender   = $animal['gender'];
+      $admitted = $animal['admitted'];
+      $id       = $animal['id'];
+
+      $new_animal = new Animal($type_id, $name, $gender, $admitted, $id);
+      array_push($result, $new_animal);
+    }
+
+    return $result;
+  }
+
   static function getAll() {
     $query = $GLOBALS['DB']->query("SELECT * FROM animals");
+    $result = array();
+
+    foreach ($query as $animal) {
+      $type_id  = $animal['type_id'];
+      $name     = $animal['name'];
+      $gender   = $animal['gender'];
+      $admitted = $animal['admitted'];
+      $id       = $animal['id'];
+
+      $new_animal = new Animal($type_id, $name, $gender, $admitted, $id);
+      array_push($result, $new_animal);
+    }
+
+    return $result;
+  }
+
+  static function getAllByDate() {
+    $query = $GLOBALS['DB']->query("SELECT * FROM animals ORDER BY admitted");
+    $result = array();
+
+    foreach ($query as $animal) {
+      $type_id  = $animal['type_id'];
+      $name     = $animal['name'];
+      $gender   = $animal['gender'];
+      $admitted = $animal['admitted'];
+      $id       = $animal['id'];
+
+      $new_animal = new Animal($type_id, $name, $gender, $admitted, $id);
+      array_push($result, $new_animal);
+    }
+
+    return $result;
+  }
+
+  static function getAllByType() {
+    $query = $GLOBALS['DB']->query("SELECT * FROM animals ORDER BY type_id");
     $result = array();
 
     foreach ($query as $animal) {

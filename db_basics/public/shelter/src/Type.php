@@ -24,6 +24,20 @@ class Type {
     $this->id = $GLOBALS['DB']->lastInsertId();
   }
 
+  static function getTypeById($search_id) {
+    $getAll = Type::getAll();
+    $result = null;
+
+    foreach ($getAll as $type) {
+      $compare_id = $type->getId();
+      if ($compare_id == $search_id) {
+        $result = $type;
+      }
+    }
+
+    return $result;
+  }
+
   static function getAll() {
     $query = $GLOBALS['DB']->query("SELECT * FROM types");
     $result = array();

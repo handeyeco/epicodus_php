@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shelter</title>
+
+  <link rel="stylesheet" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+
+<body>
+  <h1>Shelter</h1>
+
+  <h2>Types</h2>
+
+  {% if types is not empty %}
+    <ul>
+      {% for type in types %}
+        <li><a href="/type/{{ type.getId }}">{{ type.getName }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No types added yet.</p>
+  {% endif %}
+
+  <form action="/type" method="post">
+    <label for="name">Add new type:</label>
+    <input id="name" name="name" type="text" required />
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <h2>Animals</h2>
+
+  {% if animals is not empty %}
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Admitted</th>
+    </tr>
+
+    {% for animal in animals %}
+      <tr>
+        <td>{{ animal.getName }}</td>
+        <td>{{ animal.getGender }}</td>
+        <td>{{ animal.getAdmitted }}</td>
+      </tr>
+    {% endfor %}
+
+  </table>
+
+  <a href="/sort_date">Sort by Date Admitted</a>
+  <a href="/sort_type">Sort by Type</a>
+  {% else %}
+    <p>No animals added yet.</p>
+  {% endif %}
+
+  <form action="/delete_everything" method="post">
+    <button type="submit">Delete Everything</button>
+  </form>
+
+</body>
+</html>
