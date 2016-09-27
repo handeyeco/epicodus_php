@@ -28,7 +28,7 @@ class Item {
   function save() {
     $name = $this->getName();
     $year = $this->getYear();
-    $GLOBALS['DB']->exec("INSERT INTO inventory (name, year) VALUES ('$name', '$year')");
+    $GLOBALS['DB']->exec("INSERT INTO inventory (name, year) VALUES ('$name', $year)");
   }
 
   static function getAll() {

@@ -2,15 +2,23 @@
 
 class Task {
   private $description;
+  private $due_date;
+  private $category_id;
   private $id;
 
-  function __construct($description, $id = null) {
+  function __construct($description, $due_date, $category_id, $id = null) {
     $this->description = $description;
+    $this->due_date = $due_date;
+    $this->category_id = $category_id;
     $this->id = $id;
   }
 
   function getId() {
     return $this->id;
+  }
+
+  function getCategoryId() {
+    return $this->category_id;
   }
 
   function setDescription($new_description) {
@@ -21,8 +29,16 @@ class Task {
     return $this->description;
   }
 
+  function setDueDate($new_due_date) {
+    $this->due_date = $new_due_date;
+  }
+
+  function getDueDate() {
+    return $this->due_date;
+  }
+
   function save() {
-    $GLOBALS['DB']->exec("INSERT INTO tasks (description) VALUES ('{$this->getDescription()}');");
+    $GLOBALS['DB']->exec("INSERT INTO tasks (description, due_date, category_id) VALUES ('{$this->getDescription()}', '{$this->getDueDate()}', {$this->getCategoryId()})");
     $this->id = $GLOBALS['DB']->lastInsertId();
   }
 
@@ -32,8 +48,10 @@ class Task {
 
     foreach ($returned_tasks as $task) {
       $description = $task['description'];
+      $due_date = $task['due_date'];
       $id = $task['id'];
-      $new_task = new Task($description, $id);
+      $category_id = $task['category_id'];
+      $new_task = new Task($description, $due_date, $category_id, $id);
       array_push($tasks, $new_task);
     }
 

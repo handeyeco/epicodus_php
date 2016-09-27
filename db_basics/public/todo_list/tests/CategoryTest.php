@@ -12,6 +12,7 @@ class CategoryTest extends PHPUnit_Framework_TestCase {
 
   protected function tearDown() {
     Category::deleteAll();
+    Task::deleteAll();
   }
 
   function test_getName() {
@@ -81,6 +82,27 @@ class CategoryTest extends PHPUnit_Framework_TestCase {
     $result = Category::find($test_category->getId());
 
     $this->assertEquals($test_category, $result);
+  }
+
+  function test_getTasks() {
+    $name = "Work stuff";
+    $id = null;
+    $test_category = new Category($name, $id);
+    $test_category->save();
+
+    $test_category_id = $test_category->getId();
+
+    $description = "Email client";
+    $test_task = new Task($description, $test_category_id, $id);
+    $test_task->save();
+
+    $description2 = "Meet with boss";
+    $test_task2 = new Task($description2, $test_category_id, $id);
+    $test_task2->save();
+
+    $result = $test_category->getTasks();
+
+    $this->assertEquals([$test_task, $test_task2], $result);
   }
 
 }
