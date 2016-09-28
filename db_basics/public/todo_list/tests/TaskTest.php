@@ -39,8 +39,9 @@ class TaskTest extends PHPUnit_Framework_TestCase {
     $test_category->save();
 
     $description = "Wash the dog";
+    $due_date = "2000-10-10";
     $category_id = $test_category->getId();
-    $test_task = new Task($description, $category_id, $id);
+    $test_task = new Task($description, $due_date, $category_id, $id);
     $test_task->save();
 
     $result = $test_task->getCategoryId();
@@ -55,8 +56,9 @@ class TaskTest extends PHPUnit_Framework_TestCase {
     $test_category->save();
 
     $description = "Wash the dog";
+    $due_date = "2000-10-10";
     $category_id = $test_category->getId();
-    $test_task = new Task($description, $category_id, $id);
+    $test_task = new Task($description, $due_date, $category_id, $id);
 
     $test_task->save();
 
@@ -74,8 +76,9 @@ class TaskTest extends PHPUnit_Framework_TestCase {
 
     $description1 = "Wash the dog";
     $description2 = "Water the lawn";
-    $test_task1 = new Task($description1, $category_id, $id);
-    $test_task2 = new Task($description2, $category_id, $id);
+    $due_date = "2000-10-10";
+    $test_task1 = new Task($description1, $due_date, $category_id, $id);
+    $test_task2 = new Task($description2, $due_date, $category_id, $id);
     $test_task1->save();
     $test_task2->save();
 
@@ -91,12 +94,13 @@ class TaskTest extends PHPUnit_Framework_TestCase {
     $test_category->save();
 
     $description = "Wash the dog";
+    $due_date = "2000-10-10";
     $category_id = $test_category->getId();
-    $test_task = new Task($description, $id, $category_id);
+    $test_task = new Task($description, $due_date, $id, $category_id);
     $test_task->save();
 
     $description2 = "Water the lawn";
-    $test_task2 = new Task($description2, $id, $category_id);
+    $test_task2 = new Task($description2, $due_date, $id, $category_id);
     $test_task2->save();
 
     Task::deleteAll();
@@ -112,12 +116,13 @@ class TaskTest extends PHPUnit_Framework_TestCase {
     $test_category->save();
 
     $description = "Wash the dog";
+    $due_date = "2000-10-10";
     $category_id = $test_category->getId();
-    $test_task = new Task($description, $category_id, $id);
+    $test_task = new Task($description, $due_date, $category_id, $id);
     $test_task->save();
 
     $description2 = "Water the lawn";
-    $test_task2 = new Task($description2, $category_id, $id);
+    $test_task2 = new Task($description2, $due_date, $category_id, $id);
     $test_task2->save();
 
     $result = Task::find($test_task->getId());

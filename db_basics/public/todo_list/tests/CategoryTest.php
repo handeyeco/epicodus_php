@@ -44,6 +44,19 @@ class CategoryTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals($test_Category, $result[0]);
   }
 
+  function test_update() {
+    $name = "Work stuff";
+    $id = null;
+    $test_category = new Category($name, $id);
+    $test_category->save();
+
+    $new_name = "Home stuff";
+
+    $test_category->update($new_name);
+
+    $this->assertEquals("Home stuff", $test_category->getName());
+  }
+
   function test_getAll() {
     $name = "Work stuff";
     $name2 = "Home stuff";
@@ -71,6 +84,37 @@ class CategoryTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals([], $result);
   }
 
+  function test_delete() {
+    $name = "Work stuff";
+    $id = null;
+    $test_category = new Category($name, $id);
+    $test_category->save();
+
+    $name2 = "Home stuff";
+    $test_category2 = new Category($name2, $id);
+    $test_category2->save();
+
+    $test_category->delete();
+
+    $this->assertEquals([$test_category2], Category::getAll());
+  }
+
+  function test_deleteCategoryTasks() {
+    $name = "Work stuff";
+    $id = null;
+    $test_category = new Category($name, $id);
+    $test_category->save();
+
+    $description = "Build website";
+    $category_id = $test_category->getId();
+    $test_task = new Task($description, $id, $category_id);
+    $test_task->save();
+
+    $test_category->delete();
+
+    $this->assertEquals([], Task::getAll());
+  }
+
   function test_find() {
     $name = "Wash the dog";
     $name2 = "Home stuff";
@@ -93,11 +137,12 @@ class CategoryTest extends PHPUnit_Framework_TestCase {
     $test_category_id = $test_category->getId();
 
     $description = "Email client";
-    $test_task = new Task($description, $test_category_id, $id);
+    $due_date = "2000-10-10";
+    $test_task = new Task($description, $due_date, $test_category_id, $id);
     $test_task->save();
 
     $description2 = "Meet with boss";
-    $test_task2 = new Task($description2, $test_category_id, $id);
+    $test_task2 = new Task($description2, $due_date, $test_category_id, $id);
     $test_task2->save();
 
     $result = $test_category->getTasks();

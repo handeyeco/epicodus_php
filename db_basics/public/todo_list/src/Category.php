@@ -26,6 +26,18 @@ class Category {
     $this->id = $GLOBALS['DB']->lastInsertId();
   }
 
+  function update($new_name) {
+    $id = $this->getId();
+    $GLOBALS['DB']->exec("UPDATE categories SET name = '$new_name' WHERE id = '$id'");
+    $this->setName($new_name);
+  }
+
+  function delete() {
+    $id = $this->getId();
+    $GLOBALS['DB']->exec("DELETE FROM categories WHERE id = $id");
+    $GLOBALS['DB']->exec("DELETE FROM tasks WHERE category_id = $id");
+  }
+
   function getTasks() {
     $tasks = Array();
     $returned_tasks = $GLOBALS['DB']->query("SELECT * FROM tasks WHERE category_id = {$this->getId()} ORDER BY due_date");
