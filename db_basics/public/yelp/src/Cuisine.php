@@ -56,6 +56,21 @@ class Cuisine {
     return $result;
   }
 
+  static function getById($id) {
+    $query = $GLOBALS['DB']->query("SELECT * FROM cuisines WHERE id=$id");
+    $result = array();
+
+    foreach ($query as $cuisine) {
+      $name = $cuisine['name'];
+      $id = $cuisine['id'];
+
+      $new_cuisine = new Cuisine($name, $id);
+      array_push($result, $new_cuisine);
+    }
+
+    return $result[0];
+  }
+
   static function deleteAll() {
     $GLOBALS['DB']->exec("DELETE FROM cuisines");
   }

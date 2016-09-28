@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Yelp</title>
+
+</head>
+
+<body>
+
+<h1><a href="/">Yelp</a></h1>
+
+<a href="/cuisine/{{ cuisine.getId }}">Back to {{ cuisine.getName }}</a>
+
+<h2>Edit {{ restaurant.getName }}</h2>
+<form action="/restaurant/{{ restaurant.getId }}" method="post">
+  <input name="_method" type="hidden" value="patch" />
+
+  <label for="name">Name:</label>
+  <input id="name" name="name" type="text" value="{{ restaurant.getName }}" required />
+
+  <label for="website">Website:</label>
+  <input id="website" name="website" type="text" value="{{ restaurant.getWebsite }}" required />
+
+  <label for="number">Phone Number:</label>
+  <input id="number" name="number" type="text" value="{{ restaurant.getNumber }}" required />
+
+  <label for="address">Address:</label>
+  <input id="address" name="address" type="text" value="{{ restaurant.getAddress }}" required />
+
+  <label for="cuisine_id">Cuisine:</label>
+  <select id="cuisine_id" name="cuisine_id">
+
+    {% for cuisine in cuisines %}
+
+      {% if cuisine.getId == restaurant.getCuisineId %}
+        <option value="{{ cuisine.getId }}" selected>{{ cuisine.getName }}</option>
+      {% else %}
+        <option value="{{ cuisine.getId }}">{{ cuisine.getName }}</option>
+      {% endif %}
+
+    {% endfor %}
+
+  </select>
+
+  <button type="submit">Change Restaurant</button>
+</form>
+
+<h2>Delete {{ restaurant.getName }}</h2>
+<form action="/restaurant/{{ restaurant.getId }}" method="post">
+  <input name="_method" type="hidden" value="delete" />
+  <button type="submit">Delete Restaurant</button>
+</form>
+
+</body>
+</html>

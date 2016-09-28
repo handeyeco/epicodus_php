@@ -79,6 +79,29 @@ class RestaurantTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals([$new_restaurant2], $query);
   }
 
+  function test_getById() {
+    $new_restaurant = new Restaurant("Taco Bell", "www.tacobell.com", "555-555-5555", "12345 SE Ramona St", 1, null);
+    $new_restaurant2 = new Restaurant("Burger King", "www.burgerking.com", "555-555-5555", "67893 SE Ramona St", 2, null);
+    $new_restaurant->save();
+    $new_restaurant2->save();
+
+    $id = $new_restaurant2->getId();
+    $query = Restaurant::getById($id);
+
+    $this->assertEquals($new_restaurant2, $query);
+  }
+
+  function test_getByCuisine() {
+    $new_restaurant = new Restaurant("Taco Bell", "www.tacobell.com", "555-555-5555", "12345 SE Ramona St", 1, null);
+    $new_restaurant2 = new Restaurant("Burger King", "www.burgerking.com", "555-555-5555", "67893 SE Ramona St", 2, null);
+    $new_restaurant->save();
+    $new_restaurant2->save();
+
+    $query = Restaurant::getByCuisine(2);
+
+    $this->assertEquals([$new_restaurant2], $query);
+  }
+
 }
 
 ?>

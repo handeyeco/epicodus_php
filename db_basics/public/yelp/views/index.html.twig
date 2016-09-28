@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Yelp</title>
+
+</head>
+
+<body>
+
+<h1>Yelp</h1>
+
+<h2>Cuisines</h2>
+{% if cuisines is not empty %}
+  <ul>
+  {% for cuisine in cuisines %}
+    <li><a href="/cuisine/{{ cuisine.getId }}">{{ cuisine.getName }}</a></li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No cuisines added yet</p>
+{% endif %}
+
+<a href="/cuisines">Edit Cuisines</a>
+
+<h2>Restaurants</h2>
+{% if restaurants is not empty %}
+  {% for restaurant in restaurants %}
+    <h3>{{ restaurant.name }}</h3>
+    <a href="{{ restaurant.website }}">Website</a><br />
+    {{ restaurant.address }}<br />
+    {{ restaurant.number }}<br />
+  {% endfor %}
+{% else %}
+  <p>No restaurants added yet</p>
+{% endif %}
+
+</body>
+</html>

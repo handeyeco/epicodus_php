@@ -110,6 +110,44 @@ class Restaurant {
     return $result;
   }
 
+  static function getById($id) {
+    $query = $GLOBALS['DB']->query("SELECT * FROM restaurants WHERE id=$id");
+    $result = array();
+
+    foreach ($query as $restaurant) {
+      $name       = $restaurant['name'];
+      $website    = $restaurant['website'];
+      $number     = $restaurant['number'];
+      $address    = $restaurant['address'];
+      $cuisine_id = $restaurant['cuisine_id'];
+      $id         = $restaurant['id'];
+
+      $new_restaurant = new Restaurant($name, $website, $number, $address, $cuisine_id, $id);
+      array_push($result, $new_restaurant);
+    }
+
+    return $result[0];
+  }
+
+  static function getByCuisine($cuisine_id) {
+    $query = $GLOBALS['DB']->query("SELECT * FROM restaurants WHERE cuisine_id=$cuisine_id");
+    $result = array();
+
+    foreach ($query as $restaurant) {
+      $name       = $restaurant['name'];
+      $website    = $restaurant['website'];
+      $number     = $restaurant['number'];
+      $address    = $restaurant['address'];
+      $cuisine_id = $restaurant['cuisine_id'];
+      $id         = $restaurant['id'];
+
+      $new_restaurant = new Restaurant($name, $website, $number, $address, $cuisine_id, $id);
+      array_push($result, $new_restaurant);
+    }
+
+    return $result;
+  }
+
   static function deleteAll() {
     $GLOBALS['DB']->exec("DELETE FROM restaurants");
   }

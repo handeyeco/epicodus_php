@@ -96,6 +96,18 @@ class CuisineTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals([], $query);
   }
 
+  function test_getById() {
+    $new_cuisine = new Cuisine("Tacos", null);
+    $new_cuisine2 = new Cuisine("Burgers", null);
+    $new_cuisine->save();
+    $new_cuisine2->save();
+
+    $id = $new_cuisine2->getId();
+    $query = Cuisine::getById($id);
+
+    $this->assertEquals($new_cuisine2, $query);
+  }
+
 }
 
 ?>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Yelp</title>
+
+</head>
+
+<body>
+
+<h1><a href="/">Yelp</a></h1>
+
+<h2>Cuisines</h2>
+{% if cuisines is not empty %}
+  <ul>
+  {% for cuisine in cuisines %}
+    <li><a href="/cuisine/{{ cuisine.getId }}">{{ cuisine.getName }}</a></li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No cuisines added yet</p>
+{% endif %}
+
+<h2>Add a Cuisine</h2>
+<form action="/cuisines" method="post">
+  <label for="name">Name:</label>
+  <input id="name" name="name" type="text" required />
+
+  <button type="submit">Add</button>
+</form>
+
+</body>
+</html>

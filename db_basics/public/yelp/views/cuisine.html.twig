@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Yelp</title>
+
+</head>
+
+<body>
+
+<h1><a href="/">Yelp</a></h1>
+
+<h2>{{ cuisine.getName }}</h2>
+
+<a href="/cuisine/{{ cuisine.getId }}/edit">Edit Cuisine</a>
+
+{% if restaurants is not empty %}
+  {% for restaurant in restaurants %}
+    <h3>{{ restaurant.getName }}</h3>
+    <a href="{{ restaurant.getWebsite }}">Website</a><br />
+    {{ restaurant.getAddress }}<br />
+    {{ restaurant.getNumber }}<br />
+    <a href="/restaurant/{{ restaurant.getId }}/edit">Edit</a>
+  {% endfor %}
+{% else %}
+  <p>No restaurants added for this cuisine yet.</p>
+{% endif %}
+
+<h2>Add a Restaurant</h2>
+<form action="/restaurant" method="post">
+  <input name="cuisine_id" value="{{ cuisine.getId }}" type="hidden" />
+
+  <label for="name">Name:</label>
+  <input id="name" name="name" type="text" required />
+
+  <label for="website">Website:</label>
+  <input id="website" name="website" type="text" required />
+
+  <label for="number">Phone Number:</label>
+  <input id="number" name="number" type="text" required />
+
+  <label for="address">Address:</label>
+  <input id="address" name="address" type="text" required />
+
+  <button type="submit">Add Restaurant</button>
+</form>
+
+</body>
+</html>
