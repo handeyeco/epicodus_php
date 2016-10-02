@@ -7,7 +7,7 @@ Going through the Epicodus curriculum found at [learnhowtoprogram.com](https://w
 * [Takeaways](#takeaways)
 * [Questions](#questions)
 
-##<a name="takeaways"></a>Takeaways
+##Takeaways
 
 ### XAMPP Madness!
 
