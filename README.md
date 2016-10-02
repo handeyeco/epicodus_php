@@ -9,6 +9,20 @@ Going through the Epicodus curriculum found at [learnhowtoprogram.com](https://w
 
 ##Takeaways
 
+### Meta-Markdown
+
+I was trying to figure out the best way to add links in this Markdown README and I found that all I need to do is:
+
+``` Markdown
+* [Questions](#questions)
+
+##Questions
+```
+
+And that gives me a nice little [link](#questions)!
+
+
+
 ### XAMPP Madness!
 
 Using XAMPP and Sequel Pro. To get XAMPP to direct to working directory change `/Applications/XAMPP/xamppfiles/etc/httpd.conf`:
@@ -416,7 +430,7 @@ console.log(multiply(3));
 
 It's a lot easier to work with PHP than I thought it would be. A local host can be run with `php -S localhost:8000` or a shell can be opened with `php -a` to do quick PHP programming and working with forms is really easy by referencing PHP scripts with `form action="script.php"` from an HTML or PHP file.
 
-##<a name="questions"></a> Questions
+##Questions
 
 ### Default Method Return Values
 
