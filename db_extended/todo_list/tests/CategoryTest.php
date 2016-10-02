@@ -84,21 +84,6 @@ class CategoryTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals([], $result);
   }
 
-  function test_delete() {
-    $name = "Work stuff";
-    $id = null;
-    $test_category = new Category($name, $id);
-    $test_category->save();
-
-    $name2 = "Home stuff";
-    $test_category2 = new Category($name2, $id);
-    $test_category2->save();
-
-    $test_category->delete();
-
-    $this->assertEquals([$test_category2], Category::getAll());
-  }
-
   function test_find() {
     $name = "Wash the dog";
     $name2 = "Home stuff";
@@ -148,6 +133,21 @@ class CategoryTest extends PHPUnit_Framework_TestCase {
     $test_category->addTask($test_task2);
 
     $this->assertEquals($test_category->getTasks(), [$test_task, $test_task2]);
+  }
+
+  function test_delete() {
+    $name = "Work stuff";
+    $test_category = new Category($name, null);
+    $test_category->save();
+
+    $description = "File reports";
+    $test_task = new Task($description, null);
+    $test_task->save();
+
+    $test_category->addTask($test_task);
+    $test_category->delete();
+
+    $this->assertEquals([], $test_task->getCategories());
   }
 
 }

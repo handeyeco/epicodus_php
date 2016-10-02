@@ -114,6 +114,55 @@ class TaskTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals($test_task, $result);
   }
 
+  function test_addCategory() {
+    $name = "Work stuff";
+    $id = null;
+    $test_category = new Category($name, $id);
+    $test_category->save();
+
+    $description = "File reports";
+    $test_task = new Task($description, $id);
+    $test_task->save();
+
+    $test_task->addCategory($test_category);
+
+    $this->assertEquals($test_task->getCategories(), [$test_category]);
+  }
+
+  function test_getCategories() {
+    $name = "Work stuff";
+    $test_category = new Category($name, null);
+    $test_category->save();
+
+    $name2 = "Volunteer stuff";
+    $test_category2 = new Category($name, null);
+    $test_category2->save();
+
+    $description = "File reports";
+    $test_task = new Task($description, null);
+    $test_task->save();
+
+    $test_task->addCategory($test_category);
+    $test_task->addCategory($test_category2);
+
+    $this->assertEquals($test_task->getCategories(), [$test_category, $test_category2]);
+  }
+
+  function test_delete() {
+    $name = "Work stuff";
+    $test_category = new Category($name, null);
+    $test_category->save();
+
+    $description = "Files reports";
+    $test_task = new Task($description, null);
+    $test_task->save();
+
+    $test_task->addCategory($test_category);
+    $test_task->delete();
+
+    $this->assertEquals([], $test_category->getTasks());
+  }
+
 }
 
 

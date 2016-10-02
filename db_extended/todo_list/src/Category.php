@@ -32,11 +32,6 @@ class Category {
     $this->setName($new_name);
   }
 
-  function delete() {
-    $id = $this->getId();
-    $GLOBALS['DB']->exec("DELETE FROM categories WHERE id = $id");
-  }
-
   function addTask($task) {
     $category_id = $this->getId();
     $task_id = $task->getId();
@@ -62,6 +57,12 @@ class Category {
       array_push($tasks, $new_task);
     }
     return $tasks;
+  }
+
+  function delete() {
+    $id = $this->getId();
+    $GLOBALS['DB']->exec("DELETE FROM categories WHERE id=$id");
+    $GLOBALS['DB']->exec("DELETE FROM categories_tasks WHERE category_id=$id");
   }
 
   static function getAll() {
