@@ -52,7 +52,8 @@ class Category {
       $description  = $returned_task['description'];
       $due_date     = $returned_task['due_date'];
       $id           = $returned_task['id'];
-      $new_task = new Task($description, $due_date, $id);
+      $complete     = $returned_task['complete'];
+      $new_task = new Task($description, $due_date, $id, $complete);
 
       array_push($tasks, $new_task);
     }

@@ -13,6 +13,7 @@ class CategoryTest extends PHPUnit_Framework_TestCase {
   protected function tearDown() {
     Category::deleteAll();
     Task::deleteAll();
+    $GLOBALS['DB']->exec("DELETE FROM categories_tasks");
   }
 
   function test_getName() {
@@ -141,7 +142,7 @@ class CategoryTest extends PHPUnit_Framework_TestCase {
     $test_category->save();
 
     $description = "File reports";
-    $test_task = new Task($description, null);
+    $test_task = new Task($description, "1987-10-10", null, null);
     $test_task->save();
 
     $test_category->addTask($test_task);

@@ -14,6 +14,7 @@ class TaskTest extends PHPUnit_Framework_TestCase {
   protected function tearDown() {
     Task::deleteAll();
     Category::deleteAll();
+    $GLOBALS['DB']->exec("DELETE FROM categories_tasks");
   }
 
   function test_getID() {
@@ -25,7 +26,7 @@ class TaskTest extends PHPUnit_Framework_TestCase {
     $description = "Wash the dog";
     $due_date = "2000-10-10";
     $category_id = $test_category->getId();
-    $test_task = new Task($description, $due_date, $id);
+    $test_task = new Task($description, $due_date);
     $test_task->save();
 
     $result = $test_task->getId();
@@ -42,7 +43,7 @@ class TaskTest extends PHPUnit_Framework_TestCase {
     $description = "Wash the dog";
     $due_date = "2000-10-10";
     $category_id = $test_category->getId();
-    $test_task = new Task($description, $due_date, $id);
+    $test_task = new Task($description, $due_date);
 
     $test_task->save();
 
@@ -61,8 +62,8 @@ class TaskTest extends PHPUnit_Framework_TestCase {
     $description1 = "Wash the dog";
     $description2 = "Water the lawn";
     $due_date = "2000-10-10";
-    $test_task1 = new Task($description1, $due_date, $id);
-    $test_task2 = new Task($description2, $due_date, $id);
+    $test_task1 = new Task($description1, $due_date);
+    $test_task2 = new Task($description2, $due_date);
     $test_task1->save();
     $test_task2->save();
 
@@ -80,11 +81,11 @@ class TaskTest extends PHPUnit_Framework_TestCase {
     $description = "Wash the dog";
     $due_date = "2000-10-10";
     $category_id = $test_category->getId();
-    $test_task = new Task($description, $due_date, $id);
+    $test_task = new Task($description, $due_date);
     $test_task->save();
 
     $description2 = "Water the lawn";
-    $test_task2 = new Task($description2, $due_date, $id);
+    $test_task2 = new Task($description2, $due_date);
     $test_task2->save();
 
     Task::deleteAll();
@@ -102,11 +103,11 @@ class TaskTest extends PHPUnit_Framework_TestCase {
     $description = "Wash the dog";
     $due_date = "2000-10-10";
     $category_id = $test_category->getId();
-    $test_task = new Task($description, $due_date, $id);
+    $test_task = new Task($description, $due_date);
     $test_task->save();
 
     $description2 = "Water the lawn";
-    $test_task2 = new Task($description2, $due_date, $id);
+    $test_task2 = new Task($description2, $due_date);
     $test_task2->save();
 
     $result = Task::find($test_task->getId());
@@ -121,7 +122,7 @@ class TaskTest extends PHPUnit_Framework_TestCase {
     $test_category->save();
 
     $description = "File reports";
-    $test_task = new Task($description, $id);
+    $test_task = new Task($description, "1987-10-10");
     $test_task->save();
 
     $test_task->addCategory($test_category);
@@ -131,15 +132,15 @@ class TaskTest extends PHPUnit_Framework_TestCase {
 
   function test_getCategories() {
     $name = "Work stuff";
-    $test_category = new Category($name, null);
+    $test_category = new Category($name);
     $test_category->save();
 
     $name2 = "Volunteer stuff";
-    $test_category2 = new Category($name, null);
+    $test_category2 = new Category($name);
     $test_category2->save();
 
     $description = "File reports";
-    $test_task = new Task($description, null);
+    $test_task = new Task($description, "1987-10-10");
     $test_task->save();
 
     $test_task->addCategory($test_category);
@@ -154,7 +155,7 @@ class TaskTest extends PHPUnit_Framework_TestCase {
     $test_category->save();
 
     $description = "Files reports";
-    $test_task = new Task($description, null);
+    $test_task = new Task($description, "1987-10-10");
     $test_task->save();
 
     $test_task->addCategory($test_category);
@@ -164,9 +165,9 @@ class TaskTest extends PHPUnit_Framework_TestCase {
   }
 
   function test_orderByDate() {
-    $test_task = new Task("Wash Clothes", "2016-10-10", null);
-    $test_task2 = new Task("Do Dishes", "1987-10-10", null);
-    $test_task3 = new Task("Do Dishes", "2000-10-10", null);
+    $test_task = new Task("Wash Clothes", "2016-10-10");
+    $test_task2 = new Task("Do Dishes", "1987-10-10");
+    $test_task3 = new Task("Do Dishes", "2000-10-10");
     $test_task->save();
     $test_task2->save();
     $test_task3->save();
@@ -181,9 +182,9 @@ class TaskTest extends PHPUnit_Framework_TestCase {
     $new_task->save();
 
     $new_task->toggleComplete();
-    $new_task->toggleComplete();
+    $result = Task::find($new_task->getId());
 
-    $this->assertEquals($new_task->getComplete(), 0);
+    $this->assertEquals($result->getComplete(), 1);
   }
 
 }

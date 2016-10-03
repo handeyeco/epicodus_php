@@ -40,6 +40,14 @@ $app->get("/tasks/{id}", function ($id) use ($app) {
   ));
 });
 
+$app->patch("/tasks/{id}", function ($id) use ($app) {
+  $task = Task::find($id);
+  $task->toggleComplete();
+  return $app['twig']->render('tasks.html.twig', array(
+    'tasks' => Task::getAll()
+  ));
+});
+
 $app->get('/categories', function () use ($app) {
   return $app['twig']->render('categories.html.twig', array(
     'categories' => Category::getAll()

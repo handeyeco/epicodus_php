@@ -7,10 +7,10 @@ class Task {
   private $complete;
 
   function __construct($description, $due_date, $id = null, $complete = 0) {
-    $this->description = $description;
-    $this->due_date = $due_date;
-    $this->id = $id;
-    $this->complete = $complete;
+    $this->description  = $description;
+    $this->due_date     = $due_date;
+    $this->id           = $id;
+    $this->complete     = $complete;
   }
 
   function getId() {
@@ -36,13 +36,10 @@ class Task {
   function toggleComplete() {
     $id = $this->getId();
     $complete = $this->getComplete();
-    if ($complete != 0) {
-      $new_complete = 0;
-    } else {
-      $new_complete = 1;
-    }
 
-    $GLOBALS['DB']->exec("UPDATE tasks SET complete=$new_complete WHERE id=$id");
+    $new_complete = $complete != 0 ? 0 : 1;
+
+    $GLOBALS['DB']->exec("UPDATE tasks SET complete = $new_complete WHERE id = $id");
     $this->complete = $new_complete;
   }
 
@@ -92,10 +89,12 @@ class Task {
     $tasks = array();
 
     foreach ($returned_tasks as $task) {
-      $description = $task['description'];
-      $due_date = $task['due_date'];
-      $id = $task['id'];
-      $new_task = new Task($description, $due_date, $id);
+      $description  = $task['description'];
+      $due_date     = $task['due_date'];
+      $id           = $task['id'];
+      $complete     = $task['complete'];
+
+      $new_task = new Task($description, $due_date, $id, $complete);
       array_push($tasks, $new_task);
     }
 
