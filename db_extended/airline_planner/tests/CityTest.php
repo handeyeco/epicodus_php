@@ -41,6 +41,14 @@ class CityTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals([$new_city, $new_city2], $result);
   }
 
+  function test_getPrettyFormat() {
+    $new_city = new City("London", "England");
+
+    $result = $new_city->getPrettyFormat();
+
+    $this->assertEquals("London, England", $result);
+  }
+
 }
 
 ?>

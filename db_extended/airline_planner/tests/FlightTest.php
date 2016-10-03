@@ -6,12 +6,14 @@
 */
 
 require_once __DIR__."/../src/Flight.php";
+require_once __DIR__."/../src/City.php";
 require_once __DIR__."/../private/test_db_login.php";
 
 class FlightTest extends PHPUnit_Framework_TestCase {
 
   function tearDown() {
     Flight::deleteAll();
+    City::deleteAll();
   }
 
   function test_construct() {
@@ -50,6 +52,20 @@ class FlightTest extends PHPUnit_Framework_TestCase {
     $result = Flight::getById($new_flight->getId());
 
     $this->assertEquals("Delayed", $result->getStatus());
+  }
+
+  function test_getFlightInformation() {
+    $new_city = new City("London", "England");
+    $new_city2 = new City("Paris", "France");
+    $new_city->save();
+    $new_city2->save();
+
+    $new_flight = new Flight("10:00", $new_city->getId(), $new_city2->getId(), "On Time");
+    $new_flight->save();
+
+    $result = $new_flight->getFlightInformation();
+
+    $this->assertEquals("London, England -> Paris, France", $result);
   }
 
 }

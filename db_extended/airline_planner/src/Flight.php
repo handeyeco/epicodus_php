@@ -56,6 +56,15 @@ class Flight {
     $this->id = $GLOBALS['DB']->lastInsertId();
   }
 
+  function getFlightInformation() {
+    $origin_id      = $this->getOriginId();
+    $destination_id = $this->getDestinationId();
+    $origin = City::getById($origin_id);
+    $destination = City::getById($destination_id);
+
+    return "{$origin->getPrettyFormat()} -> {$destination->getPrettyFormat()}";
+  }
+
   static function getAll() {
     $query = $GLOBALS['DB']->query("SELECT * FROM flights ORDER BY destination_id, depart_time");
     $results = array();

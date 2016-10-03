@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flights</title>
+</head>
+<body>
+  <h1>{{ flight.getFlightInformation }}</h1>
+  <h2>{{ flight.getDepartTime }} - {{ flight.getStatus }}</h2>
+
+  <form action="/flight/{{ flight.getId }}" method="post">
+    <input name="_method" value="patch" type="hidden" />
+
+    <label for="status">Status:</label>
+    <select name="status" id="status">
+      <option value="On Time" selected>On Time</option>
+      <option value="Delayed">Delayed</option>
+      <option value="Cancelled">Cancelled</option>
+      <option value="Complete">Complete</option>
+    </select>
+
+    <button type="submit">Change Status</button>
+  </form>
+
+  <p><a href="/">Return Home</a></p>
+
+</body>
+</html>

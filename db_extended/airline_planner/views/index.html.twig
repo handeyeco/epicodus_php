@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flights</title>
+</head>
+<body>
+  <h1>Matthew Airlines</h1>
+
+  <h2>Flights</h2>
+
+  {% if flights is not empty %}
+    <ul>
+      {% for flight in flights %}
+        <li><a href="/flight/{{ flight.getId }}">{{ flight.getFlightInformation }}</a> ::: {{ flight.getDepartTime }} ::: {{ flight.getStatus }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No flights found</p>
+  {% endif %}
+
+  <h4>Add a Flight</h4>
+
+  <form action="/flight" method="post">
+    <label for="origin_id">Origin:</label>
+    <select name="origin_id" id="origin_id">
+      {% for city in cities %}
+        <option value="{{ city.getId }}">{{ city.getPrettyFormat }}</option>
+      {% endfor %}
+    </select>
+
+    <label for="destination_id">Destination:</label>
+    <select name="destination_id" id="destination_id">
+      {% for city in cities %}
+        <option value="{{ city.getId }}">{{ city.getPrettyFormat }}</option>
+      {% endfor %}
+    </select>
+
+    <label for="depart_time">Departing At:</label>
+    <input name="depart_time" id="depart_time" type="text" required />
+
+    <label for="status">Status:</label>
+    <select name="status" id="status">
+      <option value="On Time" selected>On Time</option>
+      <option value="Delayed">Delayed</option>
+      <option value="Cancelled">Cancelled</option>
+      <option value="Complete">Complete</option>
+    </select>
+
+    <button type="submit">Add Flight</button>
+  </form>
+
+  <h2>Cities</h2>
+
+  {% if cities is not empty %}
+    <ul>
+      {% for city in cities %}
+        <li>{{ city.getPrettyFormat }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No cities found</p>
+  {% endif %}
+
+  <h4>Add a City</h4>
+
+  <form action="/city" method="post">
+    <label for="city">City:</label>
+    <input name="city" id="city" type="text" required />
+
+    <label for="region">Region:</label>
+    <input name="region" id="region" type="text" required />
+
+    <button type="submit">Add City</button>
+  </form>
+
+  <form action="/delete_all" method="post">
+    <input name="_method" value="delete" type="hidden" />
+    <button type="submit">Delete Schedule</button>
+  </form>
+
+</body>
+</html>

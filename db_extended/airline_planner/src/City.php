@@ -32,6 +32,13 @@ class City {
     $this->id = $GLOBALS['DB']->lastInsertId();
   }
 
+  function getPrettyFormat() {
+    $city = $this->getCity();
+    $region = $this->getRegion();
+
+    return "$city, $region";
+  }
+
   static function getAll() {
     $query = $GLOBALS['DB']->query("SELECT * FROM cities");
     $result = array();
@@ -46,6 +53,22 @@ class City {
     }
 
     return $result;
+  }
+
+  static function getById($id) {
+    $query = $GLOBALS['DB']->query("SELECT * FROM cities WHERE id=$id");
+    $result = array();
+
+    foreach ($query as $city) {
+      $city_name  = $city['city'];
+      $region     = $city['region'];
+      $id         = $city['id'];
+
+      $new_city = new City($city_name, $region, $id);
+      array_push($result, $new_city);
+    }
+
+    return $result[0];
   }
 
   static function deleteAll() {
