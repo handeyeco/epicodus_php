@@ -163,6 +163,29 @@ class TaskTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals([], $test_category->getTasks());
   }
 
+  function test_orderByDate() {
+    $test_task = new Task("Wash Clothes", "2016-10-10", null);
+    $test_task2 = new Task("Do Dishes", "1987-10-10", null);
+    $test_task3 = new Task("Do Dishes", "2000-10-10", null);
+    $test_task->save();
+    $test_task2->save();
+    $test_task3->save();
+
+    $result = Task::getAll();
+
+    $this->assertEquals($result, [$test_task2, $test_task3, $test_task]);
+  }
+
+  function test_complete() {
+    $new_task = new Task("Wash Clothes", "2016-10-10");
+    $new_task->save();
+
+    $new_task->toggleComplete();
+    $new_task->toggleComplete();
+
+    $this->assertEquals($new_task->getComplete(), 0);
+  }
+
 }
 
 

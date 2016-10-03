@@ -4,11 +4,13 @@ class Task {
   private $description;
   private $due_date;
   private $id;
+  private $complete;
 
-  function __construct($description, $due_date, $id = null) {
+  function __construct($description, $due_date, $id = null, $complete = 0) {
     $this->description = $description;
     $this->due_date = $due_date;
     $this->id = $id;
+    $this->complete = $complete;
   }
 
   function getId() {
@@ -29,6 +31,23 @@ class Task {
 
   function getDueDate() {
     return $this->due_date;
+  }
+
+  function toggleComplete() {
+    $id = $this->getId();
+    $complete = $this->getComplete();
+    if ($complete != 0) {
+      $new_complete = 0;
+    } else {
+      $new_complete = 1;
+    }
+
+    $GLOBALS['DB']->exec("UPDATE tasks SET complete=$new_complete WHERE id=$id");
+    $this->complete = $new_complete;
+  }
+
+  function getComplete() {
+    return $this->complete;
   }
 
   function save() {
@@ -69,7 +88,7 @@ class Task {
   }
 
   static function getAll() {
-    $returned_tasks = $GLOBALS['DB']->query("SELECT * FROM tasks;");
+    $returned_tasks = $GLOBALS['DB']->query("SELECT * FROM tasks ORDER BY due_date");
     $tasks = array();
 
     foreach ($returned_tasks as $task) {

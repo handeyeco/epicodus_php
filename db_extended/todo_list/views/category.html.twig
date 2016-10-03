@@ -1,6 +1,8 @@
 <html>
 <head>
   <title>To Do List</title>
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 </head>
 
 <body>
@@ -17,13 +19,15 @@
 
   <h4>Add a task</h4>
 
-  <form action="/tasks" method="post">
-    <input id="category_id" name="category_id" type="hidden" value="{{ category.getId() }}" />
-    <label for="description">Task Description</label>
-    <input id="description" name="description" type="text" />
+  <form action="/add_tasks" method="post">
+    <input id="category_id" name="category_id" type="hidden" value="{{ category.getId }}" />
 
-    <label for="due_date">Task Due Date</label>
-    <input id="due_date" name="due_date" type="date" />
+    <label for="task_id">Select a Task:</label>
+    <select id="task_id" name="task_id">
+      {% for task in all_tasks %}
+        <option value="{{ task.getId }}">{{ task.getDescription }}</option>
+      {% endfor %}
+    </select>
 
     <button type="submit">Add task</button>
   </form>

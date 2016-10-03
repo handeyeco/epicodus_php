@@ -1,22 +1,29 @@
 <html>
 <head>
   <title>To Do List</title>
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 </head>
 <body>
-  <h1>To Do List</h1>
+  <h1>Tasks</h1>
 
   {% if tasks is not empty %}
     <p>Here are all your tasks:</p>
     <ul>
       {% for task in tasks %}
-        <li>{{ task.getDescription }}</li>
+        <li>
+          <a href="/tasks/{{ task.getId }}">{{ task.getDescription }} - {{ task.getDueDate }}</a>
+        </li>
       {% endfor %}
     </ul>
   {% endif %}
 
   <form action='/tasks' method='post'>
     <label for='description'>Task Description</label>
-    <input for='description' name='description' type='text' />
+    <input id='description' name='description' type='text' />
+
+    <label for="due_date">Due Date</label>
+    <input id="due_date" name="due_date" type="date" />
 
     <button type='submit'>Add Task</button>
   </form>
@@ -25,9 +32,7 @@
     <button type='submit'>Delete All</button>
   </form>
 
-  <form action='/categories' method='get'>
-    <button type='submit'>Categories</button>
-  </form>
+  <p><a href="/">Home</a></p>
 
 </body>
 </html>
