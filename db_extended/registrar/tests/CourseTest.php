@@ -13,6 +13,7 @@ class CourseTest extends PHPUnit_Framework_TestCase {
 
   function tearDown() {
     Course::deleteAll();
+    Student::deleteAll();
   }
 
   function test_construct() {
@@ -49,6 +50,18 @@ class CourseTest extends PHPUnit_Framework_TestCase {
     $query = Course::getAll();
 
     $this->assertEquals([], $query);
+  }
+
+  function test_addStudent() {
+    $new_course = new Course("History", "HIST100");
+    $new_course->save();
+    $new_student = new Student("James Dean", "10/03/2016");
+    $new_student->save();
+
+    $new_course->addStudent($new_student->getId());
+    $query = $new_course->getAllStudents();
+
+    $this->assertEquals([$new_student], $query);
   }
 
 }

@@ -51,6 +51,18 @@ class StudentTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals([], $query);
   }
 
+  function test_addCourse() {
+    $new_course = new Course("History", "HIST100");
+    $new_course->save();
+    $new_student = new Student("James Dean", "10/03/2016");
+    $new_student->save();
+
+    $new_student->addCourse($new_course->getId());
+    $query = $new_student->getAllCourses();
+
+    $this->assertEquals([$new_course], $query);
+  }
+
 }
 
 ?>
