@@ -65,6 +65,17 @@ class CourseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals([$new_student], $query);
   }
 
+  function test_getById() {
+    $new_course = new Course("History", "HIST100");
+    $new_course2 = new Course("Music", "MUSC100");
+    $new_course->save();
+    $new_course2->save();
+
+    $query = Course::getByID($new_course2->getId());
+
+    $this->assertEquals($new_course2, $query);
+  }
+
 }
 
 ?>

@@ -75,6 +75,20 @@ class Student {
     return $result;
   }
 
+  static function getById($id) {
+    $query = Student::getAll();
+    $result = null;
+
+    foreach ($query as $student) {
+      $student_id = $student->getId();
+      if ($id == $student_id) {
+        $result = $student;
+      }
+    }
+
+    return $result;
+  }
+
   static function deleteAll() {
     $GLOBALS['DB']->exec("DELETE FROM students");
   }

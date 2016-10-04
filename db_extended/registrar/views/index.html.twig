@@ -1,0 +1,68 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>Student Registration</title>
+</head>
+<body>
+
+  <h1>Student Registration</h1>
+
+  <h2>Student List</h2>
+
+  {% if students is not empty %}
+    <ul>
+      {% for student in students %}
+        <li><a href="/student/{{ student.getId }}">{{ student.getName }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No students found</p>
+  {% endif %}
+
+  <h3>Add Student</h3>
+
+  <form action="/student" method="post">
+    <label for="student_name">Name:</label>
+    <input id="student_name" name="name" type="text" required />
+
+    <label for="enrollment">Enrollment:</label>
+    <input id="enrollment" name="enrollment" type="date" required />
+
+    <button type="submit">Add Student</button>
+  </form>
+
+  <h2>Course List</h2>
+
+  {% if courses is not empty %}
+    <ul>
+      {% for course in courses %}
+        <li><a href="/course/{{ course.getId }}">{{ course.getName }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No courses found</p>
+  {% endif %}
+
+  <h3>Add Course</h3>
+
+  <form action="/course" method="post">
+    <label for="course_name">Name:</label>
+    <input id="course_name" name="name" type="text" required />
+
+    <label for="number">Number:</label>
+    <input id="number" name="number" type="text" required />
+
+    <button type="submit">Add Course</button>
+  </form>
+
+  <h2>Administration</h2>
+
+  <p><a href="/">Homepage</a></p>
+
+  <form action="/" method="post">
+    <input type="hidden" name="_method" value="delete" />
+    <button type="submit">Clear Records</button>
+  </form>
+
+</body>
+</html>

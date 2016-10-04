@@ -76,6 +76,20 @@ class Course {
     return $result;
   }
 
+  static function getById($id) {
+    $query = Course::getAll();
+    $result = null;
+
+    foreach($query as $course) {
+      $course_id = $course->getId();
+      if ($id == $course_id) {
+        $result = $course;
+      }
+    }
+
+    return $result;
+  }
+
   static function deleteAll() {
     $GLOBALS['DB']->exec("DELETE FROM courses");
   }

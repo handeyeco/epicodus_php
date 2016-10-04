@@ -1,0 +1,39 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>Student Registration</title>
+</head>
+<body>
+
+  <h1>{{ student.getName }}</h1>
+  Enrolled: {{ student.getEnrollment }} <br />
+  ID: {{ student.getId }}
+
+  <h2>Course List</h2>
+
+  {% if student_courses is not empty %}
+    <ul>
+      {% for course in student_courses %}
+        <li>{{ course.getName }} - {{ course.getNumber }} <a href="/course/{{ course.getId }}">View Course</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No courses added yet</p>
+  {% endif %}
+
+  <h3>Add Course</h3>
+
+  <form action="/student/{{ student.getId }}" method="post">
+    <label for="course_id">Course:</label>
+    <select id="course_id" name="course_id">
+      {% for course in all_courses %}
+        <option value="{{ course.getId }}">{{ course.getNumber }} - {{ course.getName }}</option>
+      {% endfor %}
+    </select>
+    <button type="submit">Add Course</button>
+  </form>
+
+  <p><a href="/">Homepage</a></p>
+
+</body>
+</html>
