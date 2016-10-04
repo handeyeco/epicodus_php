@@ -14,6 +14,7 @@ class CourseTest extends PHPUnit_Framework_TestCase {
   function tearDown() {
     Course::deleteAll();
     Student::deleteAll();
+    $GLOBALS['DB']->exec("DELETE FROM courses_students");
   }
 
   function test_construct() {

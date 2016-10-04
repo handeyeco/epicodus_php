@@ -13,6 +13,8 @@ class StudentTest extends PHPUnit_Framework_TestCase {
 
   function tearDown() {
     Student::deleteAll();
+    Course::deleteAll();
+    $GLOBALS['DB']->exec("DELETE FROM courses_students");
   }
 
   function test_construct() {
