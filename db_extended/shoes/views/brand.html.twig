@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shoes</title>
+</head>
+<body>
+  <h1>{{ brand.getName }}</h1>
+
+  <h2>Stores</h2>
+
+  {% if stores is not empty %}
+    <ul>
+      {% for store in stores %}
+        <li><a href="/store/{{ store.getId }}">{{ store.getName }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No Stores Added</p>
+  {% endif %}
+
+  <h2>Update {{ brand.getName }}</h2>
+  <form action="/brand/{{ brand.getId }}" method="post">
+    <input type="hidden" name="_method" value="patch" />
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" value="{{ brand.getName }}" required />
+    <button type="submit">Update</button>
+  </form>
+
+  <h2>Delete {{ brand.getName }}</h2>
+  <form action="/brand/{{ brand.getId }}" method="post">
+    <input type="hidden" name="_method" value="delete" />
+    <button type="submit">Delete</button>
+  </form>
+
+  <p><a href="/brands">Return to Brands</a></p>
+
+</body>
+</html>
