@@ -1,6 +1,8 @@
 #Epicodus PHP Curriculum
 
-Going through the Epicodus curriculum found at [learnhowtoprogram.com](https://www.learnhowtoprogram.com/php).
+Finished the Epicodus curriculum found at [learnhowtoprogram.com](https://www.learnhowtoprogram.com/php).
+
+Working on the final project. It's going to be a [Cold Brew Journal](https://github.com/matthewbryancurtis/cold_brew).
 
 ## Contents
 
